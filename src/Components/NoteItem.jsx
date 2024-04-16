@@ -15,7 +15,7 @@ function NoteItem(props) {
             <div className="d-flex ">
                 <h3 className="card-title">{note.title}</h3>
                 <div className="ms-auto my-1">
-                    <i className="fas fa-trash fas-thin me-3" onClick={()=> {deleteNote(note._id)}}></i>
+                    <i className="fas fa-trash fas-thin me-3" onClick={()=> {deleteNote(note._id); props.showAlert("Deleted Successfully", "danger")}}></i>
                     <i className="far fa-pen-to-square fa-sharp fa-thin " onClick={() => {updateNote(note)}}></i>
                 </div>
 

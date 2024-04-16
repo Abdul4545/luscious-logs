@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function Login() {
+function Login(props) {
 
   const [credentials, setCredentials] = useState({email: "", password: ""})
 
@@ -13,7 +13,7 @@ function Login() {
 }
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     // API Call
     const response = await fetch("http://localhost:5000/api/auth/loginuser", {
@@ -30,18 +30,20 @@ function Login() {
 
     if(json.success) {
       // save the auth token and redirect
-      localStorage.setItem("token", json.authtoken);
+      localStorage.setItem('token', json.authtoken);
+      props.showAlert("Logged in Successfully", "success")
       navigate("/");
     }
 
     else {
-      alert("Invalid Credentials")
+      props.showAlert("Invalid Details", "danger")
     }
 
   }
 
   return (
-    <div className="container">
+    <div className="container mt-2">
+      <h2>Login to Continue to Luscious Logs</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">

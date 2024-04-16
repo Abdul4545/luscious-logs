@@ -1,8 +1,8 @@
-import React, { useState,} from "react";
+import React, { useState} from "react";
 
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Signup(props) {
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -14,8 +14,6 @@ function Signup() {
   let navigate = useNavigate();
 
   const [show, setShow] = useState(false);
-
-  // let navigate = useNavigate();
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -48,10 +46,11 @@ function Signup() {
       // save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
       navigate("/");
+      props.showAlert("Account created Successfully", "success")
     }
 
     else {
-      alert(json.error)
+      props.showAlert("Invalid Credentials", "danger")
     }
   
 
@@ -60,7 +59,8 @@ function Signup() {
 
 
   return (
-    <div>
+    <div className="container mt-2">
+      <h2>Create an account to use Lusciuos Logs</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">

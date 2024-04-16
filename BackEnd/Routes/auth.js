@@ -84,6 +84,7 @@ router.post('/loginuser', [
         let user = await User.findOne({email});
 
         if(!user) {
+            success = false;
             return res.status(400).json({error: "Please try to login with correct credentials"})
         }
 
