@@ -39,7 +39,7 @@ const NoteState = (props) => {
     });
 
     const note = await response.json()
-    
+    console.log(note);
     setNotes(notes.concat(note));
 
   };

@@ -17,7 +17,7 @@ router.post('/createuser', [
     body('name', "Enter name of length atleast of 3 characters").isLength({ min: 3 }),
     body('password').isLength({ min: 5 }),
 ], async (req, res) => {
-
+    
     // if there are errors, return bad request and the errors
     const errors = validationResult(req);
     let success = false;

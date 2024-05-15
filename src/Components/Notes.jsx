@@ -107,8 +107,9 @@ const Notes = (props) => {
                   <label htmlFor="edescription" className="form-label">
                     Description
                   </label>
-                  <input
+                  <textarea
                     type="text"
+                    rows="3" cols = "50"
                     className="form-control"
                     id="edescription"
                     name="edescription"
@@ -172,17 +173,7 @@ const Notes = (props) => {
         })}
       </div>
 
-      {/* <div className="row my-3">
-        <h1>Your Notes</h1>
-
-        <div className="container">
-          {notes.length === 0 && "Nothing to Todo"}
-        </div>
-
-        {notes.map((note) => {
-          return <NoteItem key = {note._id} updateNote = {updateNote} showAlert = {props.showAlert} note = {note} />
-        })}
-      </div> */}
+      
     </>
   );
 };
